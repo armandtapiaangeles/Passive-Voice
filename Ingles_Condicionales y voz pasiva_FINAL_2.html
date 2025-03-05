@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condicionales y Voz Pasiva en Inglés</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .responsive-chart {
+            max-width: 100%;
+            height: auto;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background: #f9f9f9;
+        }
+        .errors {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Condicionales y Voz Pasiva en Inglés</h1>
+        <h2>Explicaciones</h2>
+        <p><strong>Condicionales:</strong> Los condicionales en inglés se utilizan para describir situaciones hipotéticas. Por ejemplo:</p>
+        <ul>
+            <li>Condicional cero: "If you heat water, it boils."</li>
+            <li>Primer condicional: "If it rains, I will stay home."</li>
+            <li>Segundo condicional: "If I were you, I would study more."</li>
+            <li>Tercer condicional: "If I had known, I would have helped."</li>
+        </ul>
+        <p><strong>Voz Pasiva:</strong> La voz pasiva se usa cuando el sujeto recibe la acción. Por ejemplo:</p>
+        <ul>
+            <li>Activo: "The chef cooks the meal."</li>
+            <li>Pasivo: "The meal is cooked by the chef."</li>
+        </ul>
+
+        <h2>Examen</h2>
+        <form id="quiz-form">
+            <p>1. If it ___ tomorrow, we will cancel the picnic.</p>
+            <label><input type="radio" name="q1" value="a"> rains</label><br>
+            <label><input type="radio" name="q1" value="b"> rained</label><br>
+            <label><input type="radio" name="q1" value="c"> rain</label><br>
+        
+            <p>2. The homework ___ by the student.</p>
+            <label><input type="radio" name="q2" value="a"> is done</label><br>
+            <label><input type="radio" name="q2" value="b"> done</label><br>
+            <label><input type="radio" name="q2" value="c"> did</label><br>
+        
+            <p>3. If I ___ more time, I would learn French.</p>
+            <label><input type="radio" name="q3" value="a"> had</label><br>
+            <label><input type="radio" name="q3" value="b"> have</label><br>
+            <label><input type="radio" name="q3" value="c"> has</label><br>
+        
+            <p>4. The cake ___ yesterday.</p>
+            <label><input type="radio" name="q4" value="a"> baked</label><br>
+            <label><input type="radio" name="q4" value="b"> was baked</label><br>
+            <label><input type="radio" name="q4" value="c"> is baked</label><br>
+        
+            <p>5. If you ___ early, you wouldn’t have missed the train.</p>
+            <label><input type="radio" name="q5" value="a"> arrived</label><br>
+            <label><input type="radio" name="q5" value="b"> had arrived</label><br>
+            <label><input type="radio" name="q5" value="c"> arrive</label><br>
+        
+            <p>6. This book ___ by many readers.</p>
+            <label><input type="radio" name="q6" value="a"> was read</label><br>
+            <label><input type="radio" name="q6" value="b"> read</label><br>
+            <label><input type="radio" name="q6" value="c"> is reading</label><br>
+        
+            <p>7. If he ___ harder, he would pass the exam.</p>
+            <label><input type="radio" name="q7" value="a"> studies</label><br>
+            <label><input type="radio" name="q7" value="b"> studied</label><br>
+            <label><input type="radio" name="q7" value="c"> study</label><br>
+        
+            <p>8. The room ___ cleaned every day.</p>
+            <label><input type="radio" name="q8" value="a"> is</label><br>
+            <label><input type="radio" name="q8" value="b"> was</label><br>
+            <label><input type="radio" name="q8" value="c"> will</label><br>
+        
+            <p>9. If I ___ a car, I could travel more.</p>
+            <label><input type="radio" name="q9" value="a"> had</label><br>
+            <label><input type="radio" name="q9" value="b"> have</label><br>
+            <label><input type="radio" name="q9" value="c"> has</label><br>
+        
+            <p>10. The letter ___ yesterday.</p>
+            <label><input type="radio" name="q10" value="a"> was sent</label><br>
+            <label><input type="radio" name="q10" value="b"> sent</label><br>
+            <label><input type="radio" name="q10" value="c"> is sent</label><br>
+        
+            <button type="button" onclick="gradeQuiz()">Enviar Respuestas</button>
+        </form>        
+
+        <div id="results" class="results"></div>
+        <canvas id="resultChart" class="responsive-chart"></canvas>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: "a",
+            q2: "a",
+            q3: "a",
+            q4: "b",
+            q5: "b",
+            q6: "a",
+            q7: "b",
+            q8: "a",
+            q9: "a",
+            q10: "a"
+        };
+    
+        const explanations = {
+            q1: "Usamos 'rains' en el primer condicional para hablar de resultados futuros probables.",
+            q2: "La voz pasiva presente requiere 'is done'.",
+            q3: "'Had' se usa en el segundo condicional para situaciones hipotéticas.",
+            q4: "'Was baked' es correcto en voz pasiva en pasado.",
+            q5: "'Had arrived' aplica al tercer condicional para eventos no ocurridos en el pasado.",
+            q6: "'Was read' es correcto para la voz pasiva en pasado.",
+            q7: "'Studied' es el verbo adecuado para el segundo condicional.",
+            q8: "'Is' muestra una acción habitual en voz pasiva.",
+            q9: "'Had' es el verbo correcto en el segundo condicional.",
+            q10: "'Was sent' es correcto para la voz pasiva en pasado."
+        };
+    
+        function gradeQuiz() {
+            const form = document.querySelector("#quiz-form");
+            let correct = 0, incorrect = 0;
+            let errors = [];
+    
+            // Recorremos todas las preguntas del objeto correctAnswers
+            Object.keys(correctAnswers).forEach((key, index) => {
+                // Obtenemos la respuesta seleccionada del formulario
+                const selectedAnswer = form.querySelector(`input[name="${key}"]:checked`);
+                
+                // Validamos si la respuesta es correcta o incorrecta
+                if (selectedAnswer) {
+                    if (selectedAnswer.value === correctAnswers[key]) {
+                        correct++;
+                    } else {
+                        incorrect++;
+                        errors.push(`Pregunta ${index + 1}: ${explanations[key]}`);
+                    }
+                } else {
+                    incorrect++;
+                    errors.push(`Pregunta ${index + 1}: No seleccionaste ninguna opción. Respuesta correcta: ${correctAnswers[key]}`);
+                }
+            });
+    
+            // Mostrar resultados
+            document.getElementById("results").innerHTML = `
+                <p>Puntuación final: ${correct} correctas, ${incorrect} incorrectas.</p>
+                <p class="errors">${errors.length ? "Errores:<br>" + errors.join("<br>") : "¡Bien hecho!"}</p>
+            `;
+            renderChart(correct, incorrect);
+        }
+    
+        function renderChart(correct, incorrect) {
+            const ctx = document.getElementById('resultChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Correctas', 'Incorrectas'],
+                    datasets: [{
+                        label: 'Resultados del Examen',
+                        data: [correct, incorrect],
+                        backgroundColor: ['#4CAF50', '#F44336'],
+                        borderColor: '#333',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    </script>    
+</body>
+</html>
